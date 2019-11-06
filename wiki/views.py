@@ -14,9 +14,9 @@ class PageList(ListView):
     """
     model = Page
 
-    def get(self, request, username, slug):
+    def get(self, request):
         page_list = Page.objects.all()
-        return render('list.html', {'page_list': page_list})
+        return render(request, 'wiki/list.html', {'page_list': page_list})
 
 
 class PageDetailView(DetailView):
@@ -39,8 +39,8 @@ class PageDetailView(DetailView):
     model = Page
 
     def get(self, request, slug):
-        page_get = Page.objects.all()[slug]
-        return render('page.html', {'page_get': page_get})
+        page_get = Page.objects.get(slug=slug)
+        return render(request, 'wiki/page.html', {'page_get': page_get})
 
     def post(self, request, slug):
         pass

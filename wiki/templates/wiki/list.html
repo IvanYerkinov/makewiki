@@ -1,0 +1,11 @@
+{% extends 'wiki/base.html' %}
+
+
+{% block content %}
+
+    {% for wiki in page_list %}
+        <h2><a href="{{ wiki.slug }}">{{ wiki.title }}</a></h2>
+        <p>Published by: {{wiki.author}}</p>
+        <p>Created at: {{wiki.created}}</p>
+    {% endfor %}
+{% endblock %}
